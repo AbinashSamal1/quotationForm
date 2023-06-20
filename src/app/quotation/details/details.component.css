@@ -130,8 +130,8 @@
 .form-element input {
   display: none;
 }
-.m{
-  margin:20px
+.m {
+  margin: 20px;
 }
 .form-element label {
   width: 100%;
@@ -172,13 +172,11 @@
   transform: scale(2);
   transition: all 100s ease-in-out;
 }
-
-/* .form-element input:checked + label .icon {
-  color: #678fd0;
+.form-element input + label .icon {
+  box-shadow: 0px 0px 1px 1px lightgray;
+  border-radius: 50px;
+  background-color: rgb(201, 220, 227);
 }
-.form-element input:checked + label .title {
-  color: #678fd0;
-} */
 .form-element input:checked + label {
   border: 1.5px solid #678fd0;
 }

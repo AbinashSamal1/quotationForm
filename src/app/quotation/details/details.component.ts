@@ -82,16 +82,6 @@ export class DetailsComponent implements OnInit {
       ),
     });
   }
-  validationForBudget() {
-    this.budget = new FormGroup({
-      amount: new FormGroup({
-        amount1: new FormControl(['', Validators.required]),
-        amount2: new FormControl(false),
-        amount3: new FormControl(false),
-        amount4: new FormControl(false),
-      }),
-    });
-  }
 
   next() {
     if (this.step == 1) {
@@ -131,7 +121,7 @@ export class DetailsComponent implements OnInit {
   submit() {
     if (this.step == 4) {
       this.reviewSubmit = true;
-      alert('Well done!!');
+      alert('Thank You!');
     }
   }
 }
