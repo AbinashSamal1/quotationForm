@@ -130,10 +130,12 @@
 .form-element input {
   display: none;
 }
+.m{
+  margin:20px
+}
 .form-element label {
   width: 100%;
   display: flex;
-  justify-content: center;
   height: 100%;
   cursor: pointer;
   border: 1px solid #ddd;
@@ -163,7 +165,6 @@
   left: 8px;
   background: #3b71ca;
   color: #fff;
-  text-align: center;
   line-height: 18px;
   font-size: 14px;
   font-weight: 600;

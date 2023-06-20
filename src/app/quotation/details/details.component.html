@@ -1,4 +1,4 @@
-<div class="h5 center-screen">Get a quote project quote <br /></div>
+<div class="h4 center-screen">Get a project quote <br /></div>
 <div class="center-screen text-muted">
   Please fill the form details to receive a quote for your project.Feel <br />
   free to add as much detail as needed
@@ -91,6 +91,7 @@
   class="btn btn-primary next curve1 col-md-1"
   (click)="next()"
   *ngIf="step == 1"
+  [disabled]="personalDetails.invalid"
 >
   Next
 </button>
@@ -132,7 +133,7 @@
                           />
                           <label for="instagram">
                             <div class="icon m-2">
-                              <i class="fa fa-window-maximize"></i>
+                              <i class="fa fa-window-maximize m-2"></i>
                             </div>
                             <div class="title mt-2">Development</div>
                           </label>
@@ -146,7 +147,7 @@
                             />
                             <label for="twitch">
                               <div class="icon m-2">
-                                <i class="fa fa-windows"></i>
+                                <i class="fa fa-windows m-2"></i>
                               </div>
                               <div class="title mt-2">Web Design</div>
                             </label>
@@ -166,7 +167,7 @@
                           />
                           <label for="slack">
                             <div class="icon m-2">
-                              <i class="fa fa-bullhorn"></i>
+                              <i class="fa fa-bullhorn m-2"></i>
                             </div>
                             <div class="title mt-2">Marketing</div>
                           </label>
@@ -180,7 +181,7 @@
                             />
                             <label for="twitter">
                               <div class="icon m-2">
-                                <i class="fa fa-cog"></i>
+                                <i class="fa fa-cog m-2"></i>
                               </div>
                               <div class="title mt-2">Other</div>
                             </label>
@@ -257,7 +258,7 @@
                             formControlName="paymentOptions"
                           />
                           <label for="pinterest">
-                            <div class="title mt-2">{{ item.name }}</div>
+                            <div class="title mt-2 m-3">{{ item.name }}</div>
                           </label>
                         </div>
                         <div class="col" *ngFor="let amount of RADIO_LIST2">
@@ -270,7 +271,9 @@
                               formControlName="paymentOptions"
                             />
                             <label for="dribble">
-                              <div class="title mt-2">{{ amount.name }}</div>
+                              <div class="title mt-2 m-3">
+                                {{ amount.name }}
+                              </div>
                             </label>
                           </div>
                         </div>
@@ -289,7 +292,7 @@
                             formControlName="paymentOptions"
                           />
                           <label for="codepen">
-                            <div class="title mt-2">{{ items.name }}</div>
+                            <div class="title mt-2 m-3">{{ items.name }}</div>
                           </label>
                         </div>
                         <div class="col" *ngFor="let amounts of RADIO_LIST4">
@@ -302,7 +305,9 @@
                               formControlName="paymentOptions"
                             />
                             <label for="github">
-                              <div class="title mt-2">{{ amounts.name }}</div>
+                              <div class="title mt-2 m-3">
+                                {{ amounts.name }}
+                              </div>
                             </label>
                           </div>
                         </div>

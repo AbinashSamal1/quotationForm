@@ -22,28 +22,22 @@ enum CheckBoxType {
 export class DetailsComponent implements OnInit {
   personalDetails!: FormGroup;
   projectServices!: FormGroup;
-  services!: any;
+  services!: FormGroup;
   budget!: FormGroup;
   review!: FormGroup;
-  version = 'Angular: v' + VERSION.full;
 
-  // steps
+  // stepper
   personal_step = false;
   project_services = false;
   budget_step = false;
   reviewSubmit = false;
   step = 1;
-  selection = {};
-  // radio list
 
+  // radio list
   RADIO_LIST = [{ name: '$5,000-$10,000', value: 'amount1', checked: false }];
   RADIO_LIST2 = [{ name: '$10,000-$20,000', value: 'amount2', checked: false }];
   RADIO_LIST3 = [{ name: '$20,000-$50,000', value: 'amount3', checked: false }];
-  RADIO_LIST4 = [{ name: '$50,000+', value: 'amount4', checked: false }];
-
-  check_box_type = CheckBoxType;
-
-  currentlyChecked!: CheckBoxType;
+  RADIO_LIST4 = [{ name: '$50,000+', value: 'amount4', checked: true }];
 
   constructor(private fb: FormBuilder) {}
 
@@ -140,30 +134,4 @@ export class DetailsComponent implements OnInit {
       alert('Well done!!');
     }
   }
-
-  // selectCheckBox(targetType: CheckBoxType) {
-  //   // If the checkbox was already checked, clear the currentlyChecked variable
-  //   if (this.currentlyChecked === targetType) {
-  //     this.currentlyChecked = CheckBoxType.none;
-  //     return;
-  //   }
-
-  //   this.currentlyChecked = targetType;
-  // }
-
-  // checklist = [
-  //   { id: 1, value: '$5,000-$10,000', isSelected: false },
-  //   { id: 2, value: '$10,000-$20,000', isSelected: false },
-  //   { id: 4, value: '$20,000-$50,000', isSelected: false },
-  //   { id: 5, value: '$50,000+', isSelected: false },
-  // ];
-
-  // isAllSelected(item: any) {
-  //   this.checklist.forEach((val) => {
-  //     if (val.id == item.id) val.isSelected = !val.isSelected;
-  //     else {
-  //       val.isSelected = false;
-  //     }
-  //   });
-  // }
 }
