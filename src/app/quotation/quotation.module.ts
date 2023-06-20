@@ -21,6 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     QuotationRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
 })
 export class QuotationModule {}

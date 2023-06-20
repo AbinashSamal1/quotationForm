@@ -6,6 +6,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { requireCheckboxesToBeCheckedValidator } from '../requiredcheckbox.validator';
+enum CheckBoxType {
+  amount1,
+  amount2,
+  amount3,
+  amount4,
+  none,
+}
 
 @Component({
   selector: 'app-details',
@@ -26,13 +33,32 @@ export class DetailsComponent implements OnInit {
   budget_step = false;
   reviewSubmit = false;
   step = 1;
+  selection = {};
+  // radio list
+
+  RADIO_LIST = [{ name: '$5,000-$10,000', value: 'amount1', checked: false }];
+  RADIO_LIST2 = [{ name: '$10,000-$20,000', value: 'amount2', checked: false }];
+  RADIO_LIST3 = [{ name: '$20,000-$50,000', value: 'amount3', checked: false }];
+  RADIO_LIST4 = [{ name: '$50,000+', value: 'amount4', checked: false }];
+
+  check_box_type = CheckBoxType;
+
+  currentlyChecked!: CheckBoxType;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.validation();
     this.validationForServices();
-    this.validationForBudget();
+
+    // Radio list validation
+    let getCheckedRadio = null;
+    this.RADIO_LIST.forEach((o) => {
+      if (o.checked) getCheckedRadio = o.value;
+    });
+    this.budget = new FormGroup({
+      paymentOptions: new FormControl(getCheckedRadio, [Validators.required]),
+    });
   }
 
   validation() {
@@ -64,15 +90,12 @@ export class DetailsComponent implements OnInit {
   }
   validationForBudget() {
     this.budget = new FormGroup({
-      amount: new FormGroup(
-        {
-          amount1: new FormControl(false),
-          amount2: new FormControl(false),
-          amount3: new FormControl(false),
-          amount4: new FormControl(false),
-        },
-        requireCheckboxesToBeCheckedValidator()
-      ),
+      amount: new FormGroup({
+        amount1: new FormControl(['', Validators.required]),
+        amount2: new FormControl(false),
+        amount3: new FormControl(false),
+        amount4: new FormControl(false),
+      }),
     });
   }
 
@@ -117,4 +140,30 @@ export class DetailsComponent implements OnInit {
       alert('Well done!!');
     }
   }
+
+  // selectCheckBox(targetType: CheckBoxType) {
+  //   // If the checkbox was already checked, clear the currentlyChecked variable
+  //   if (this.currentlyChecked === targetType) {
+  //     this.currentlyChecked = CheckBoxType.none;
+  //     return;
+  //   }
+
+  //   this.currentlyChecked = targetType;
+  // }
+
+  // checklist = [
+  //   { id: 1, value: '$5,000-$10,000', isSelected: false },
+  //   { id: 2, value: '$10,000-$20,000', isSelected: false },
+  //   { id: 4, value: '$20,000-$50,000', isSelected: false },
+  //   { id: 5, value: '$50,000+', isSelected: false },
+  // ];
+
+  // isAllSelected(item: any) {
+  //   this.checklist.forEach((val) => {
+  //     if (val.id == item.id) val.isSelected = !val.isSelected;
+  //     else {
+  //       val.isSelected = false;
+  //     }
+  //   });
+  // }
 }
